@@ -1,12 +1,14 @@
 .navbar {
-  padding: 20px 0px;
+  padding: 0 2%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #D2D2D2;
 }
 
 .navbar .logo {
   width: 150px;
+  cursor: pointer;
 }
 
 .navbar-menu {
@@ -47,16 +49,18 @@
 .navbar .active {
   color: #fff;
   background-color: #0f6cbf;
-  padding: 5px;
   border-radius: 5px;
 }
 
 .navbar li {
+  font-size: 15px;
     cursor: pointer;
+    padding: 10px 15px;
 }
 
 .navbar-search-icon {
     position: relative;
+    cursor: pointer;
 }
 
 .navbar-search-icon .dot {
@@ -67,4 +71,11 @@
     border-radius: 5px;
     top: -8px;
     right: -8px;
+}
+
+.navbar-icon-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
