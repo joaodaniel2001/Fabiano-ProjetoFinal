@@ -1,0 +1,17 @@
+.header {
+  padding: 30px 7%;
+}
+
+.header h1 {
+  font-size: 40px;
+}
+
+.header-contents {
+  margin-top: 40px;
+  box-shadow: 0 0 10px 1px #ccc;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+}
+

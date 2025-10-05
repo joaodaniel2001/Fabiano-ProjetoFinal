@@ -49,28 +49,35 @@
 .navbar .active {
   color: #fff;
   background-color: #0f6cbf;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .navbar li {
   font-size: 15px;
-    cursor: pointer;
-    padding: 10px 15px;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: .3s ease;
+}
+
+.navbar li:hover {
+  color: #fff;
+  background-color: #0f6cbf;
+  border-radius: 10px;
 }
 
 .navbar-search-icon {
-    position: relative;
-    cursor: pointer;
+  position: relative;
+  cursor: pointer;
 }
 
 .navbar-search-icon .dot {
-    position: absolute;
-    min-width: 10px;
-    min-height: 10px;
-    background-color: tomato;
-    border-radius: 5px;
-    top: -8px;
-    right: -8px;
+  position: absolute;
+  min-width: 10px;
+  min-height: 10px;
+  background-color: tomato;
+  border-radius: 5px;
+  top: -8px;
+  right: -8px;
 }
 
 .navbar-icon-text {

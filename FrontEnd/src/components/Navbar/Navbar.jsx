@@ -2,28 +2,42 @@
 import React, { useState } from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
+import { FaHome, FaUser, FaRegCalendar, FaSearch } from 'react-icons/fa';
+import { BiSupport } from 'react-icons/bi';
+import { MdNotifications } from "react-icons/md";
 
 const Navbar = () => {
-    
+
     const [menu, setMenu] = useState("home")
+    const getIconColor = (menuName) => {
+        return menu === menuName ? '#fff' : '#000'
+    }
+    const menuItems = [
+        { name: 'home', label: 'Página Inicial', icon: <FaHome /> },
+        { name: 'calendario', label: 'Calendário', icon: <FaRegCalendar /> },
+        { name: 'aluno', label: 'Aluno', icon: <FaUser /> },
+        { name: 'suporte', label: 'Falar com o suporte', icon: <BiSupport /> }
+    ]
 
     return (
         <div className='navbar'>
-            <img onClick={()=>setMenu("home")}src={assets.logo} alt="Logo Senai" className='logo' />
+            <img onClick={() => setMenu("home")} src={assets.logo} alt="Logo Senai" className='logo' />
             <ul className="navbar-menu">
-                <li onClick={()=>setMenu("home")} className={menu==='home' ? 'active navbar-icon-text' : 'navbar-icon-text'}>
-                    <span><img src={assets.home_black} className=''/></span>Página inicial</li>
-                <li onClick={()=>setMenu("calendario")} className={menu==='calendario' ? 'active navbar-icon-text' : 'navbar-icon-text'}>
-                <span><img src={assets.calendar_black} className='navbar-icon'/></span>Calendário</li>
-                <li onClick={()=>setMenu("aluno")} className={menu==='aluno' ? 'active navbar-icon-text' : 'navbar-icon-text'}>
-                <span><img src={assets.user_black} className='navbar-icon'/></span>Aluno</li>
-                <li onClick={()=>setMenu("suporte")} className={menu==='suporte' ? 'active navbar-icon-text' : 'navbar-icon-text'}>
-                <span><img src={assets.support_black} className='navbar-icon'/></span>Falar com o suporte</li>
+                {/* Mapeando a lista e pegando os items */}
+                {menuItems.map((item) => (
+                    <li
+                        key={item.name}
+                        onClick={() => setMenu(item.name)}
+                        className={menu === item.name ? 'active navbar-icon-text' : 'navbar-icon-text'}
+                    >
+                        <span>{item.icon}</span>{item.label}
+                    </li>
+                ))}
             </ul>
             <div className="navbar-right">
-                <img src={assets.search_icon} alt="pesquisa" className='icon' />
+                <FaSearch size='1.4em' />
                 <div className="navbar-search-icon">
-                    <img src={assets.notification_icon} alt="notificacao" className='icon'/>
+                    <MdNotifications size='1.8em' />
                     <div className="dot"></div>
                 </div>
                 <button>sing in</button>
