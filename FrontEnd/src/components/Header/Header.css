@@ -8,9 +8,9 @@
 
 .header-contents {
   margin-top: 40px;
-  box-shadow: 0 0 10px 1px #ccc;
+  box-shadow: 0 0 10px 1px var(--gray-100);
   width: 100%;
-  background-color: #fff;
+  background-color: var(--white);
   padding: 20px;
   border-radius: 20px;
 }

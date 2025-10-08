@@ -1,37 +1,37 @@
-
-import React, { useState } from 'react'
+import React from 'react'
 import './Navbar.css'
 import { assets } from '../../assets/assets'
+import { NavLink, Link } from 'react-router-dom';
 import { FaHome, FaUser, FaRegCalendar, FaSearch } from 'react-icons/fa';
 import { BiSupport } from 'react-icons/bi';
 import { MdNotifications } from "react-icons/md";
 
 const Navbar = () => {
 
-    const [menu, setMenu] = useState("home")
-    const getIconColor = (menuName) => {
-        return menu === menuName ? '#fff' : '#000'
-    }
     const menuItems = [
-        { name: 'home', label: 'Página Inicial', icon: <FaHome /> },
-        { name: 'calendario', label: 'Calendário', icon: <FaRegCalendar /> },
-        { name: 'aluno', label: 'Aluno', icon: <FaUser /> },
-        { name: 'suporte', label: 'Falar com o suporte', icon: <BiSupport /> }
+        { name: 'home', label: 'Página Inicial', icon: <FaHome />, to: '/' },
+        { name: 'calendario', label: 'Calendário', icon: <FaRegCalendar />, to: '/calendario' },
+        { name: 'aluno', label: 'Aluno', icon: <FaUser />, to: '/aluno' },
+        { name: 'suporte', label: 'Falar com o suporte', icon: <BiSupport />, to: '/suporte' }
     ]
 
     return (
         <div className='navbar'>
-            <img onClick={() => setMenu("home")} src={assets.logo} alt="Logo Senai" className='logo' />
+            <Link to="/">
+                <img src={assets.logo} alt="Logo Senai" className='logo' />
+            </Link>
+
             <ul className="navbar-menu">
-                {/* Mapeando a lista e pegando os items */}
                 {menuItems.map((item) => (
-                    <li
+                    <NavLink
                         key={item.name}
-                        onClick={() => setMenu(item.name)}
-                        className={menu === item.name ? 'active navbar-icon-text' : 'navbar-icon-text'}
+                        to={item.to}
+                        className={({ isActive }) =>
+                            isActive ? 'active' : ''
+                        }
                     >
                         <span>{item.icon}</span>{item.label}
-                    </li>
+                    </NavLink>
                 ))}
             </ul>
             <div className="navbar-right">

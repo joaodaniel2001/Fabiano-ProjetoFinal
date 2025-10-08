@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #D2D2D2;
+  border-bottom: 1px solid var(--gray-100);
 }
 
 .navbar .logo {
@@ -16,7 +16,7 @@
   display: flex;
   list-style: none;
   gap: 20px;
-  color: #101828;
+  color: var(--black-bgr);
   font-size: 18px;
 }
 
@@ -33,8 +33,8 @@
 .navbar button {
   background-color: transparent;
   font-size: 16px;
-  color: #101828;
-  border: 1px solid #101828;
+  color: var(--black-bgr);
+  border: 1px solid var(--black-bgr);
   padding: 10px 30px;
   border-radius: 50px;
   cursor: pointer;
@@ -42,27 +42,45 @@
 }
 
 .navbar button:hover {
-  background-color: #101828;
-  color: #fff;
+  background-color: var(--black-bgr);
+  color: var(--white);
 }
 
-.navbar .active {
-  color: #fff;
-  background-color: #0f6cbf;
-  border-radius: 10px;
-}
+/* ESTILOS PARA OS LINKS (NavLink - tag 'a') */
 
-.navbar li {
+.navbar-menu a {
   font-size: 15px;
   cursor: pointer;
   padding: 10px 15px;
   transition: .3s ease;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none; 
+  color: var(--black-bgr); 
 }
 
-.navbar li:hover {
-  color: #fff;
-  background-color: #0f6cbf;
+/* Regras que estavam em .navbar li:hover */
+.navbar-menu a:hover {
+  color: var(--white);
+  background-color: var(--blue-button);
   border-radius: 10px;
+}
+
+/* Regra para o link ATIVO */
+.navbar .active {
+  color: var(--white);
+  background-color: var(--blue-button);
+  border-radius: 10px;
+}
+
+/* Regra que pode ser redundante se o display:flex estiver em '.navbar-menu a' */
+.navbar-icon-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .navbar-search-icon {
@@ -74,15 +92,8 @@
   position: absolute;
   min-width: 10px;
   min-height: 10px;
-  background-color: tomato;
+  background-color: var(--red-tomato);
   border-radius: 5px;
   top: -8px;
   right: -8px;
-}
-
-.navbar-icon-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
 }
