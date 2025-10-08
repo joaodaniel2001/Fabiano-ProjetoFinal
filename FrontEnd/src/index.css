@@ -9,7 +9,8 @@
 
   --red-tomato: #ff6347;
 
-  --blue-button: #0f6cbf;
+  --blue: #0f6cbf;
+  --blue-dark: #1d2939;
 }
 
 * {
@@ -26,8 +27,11 @@ html {
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.6rem;
-  min-height: 100vh;
   color: var(--text-default)
+}
+
+main {
+  min-height: 100vh;
 }
 
 a {

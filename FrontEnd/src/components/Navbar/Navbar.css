@@ -16,7 +16,7 @@
   display: flex;
   list-style: none;
   gap: 20px;
-  color: var(--black-bgr);
+  color: var(--black);
   font-size: 18px;
 }
 
@@ -64,14 +64,14 @@
 /* Regras que estavam em .navbar li:hover */
 .navbar-menu a:hover {
   color: var(--white);
-  background-color: var(--blue-button);
+  background-color: var(--blue);
   border-radius: 10px;
 }
 
 /* Regra para o link ATIVO */
 .navbar .active {
   color: var(--white);
-  background-color: var(--blue-button);
+  background-color: var(--blue);
   border-radius: 10px;
 }
 

@@ -1,12 +1,13 @@
 
 import React from 'react'
-import './Calendario.css'
+import './Suporte.jsx'
 
-const Calendario = () => {
+const Suporte = () => {
     return (
         <main>
+
         </main>
     )
 }
 
-export default Calendario
+export default Suporte

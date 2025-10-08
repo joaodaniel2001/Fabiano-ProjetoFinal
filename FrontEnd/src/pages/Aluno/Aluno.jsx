@@ -1,12 +1,13 @@
 
 import React from 'react'
-import './Calendario.css'
+import './Aluno.css'
 
-const Calendario = () => {
+const Aluno = () => {
     return (
         <main>
+            
         </main>
     )
 }
 
-export default Calendario
+export default Aluno

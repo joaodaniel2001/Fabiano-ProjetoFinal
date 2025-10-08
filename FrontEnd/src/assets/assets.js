@@ -2,6 +2,9 @@
 import logo from './logo-senai.png'
 import dot from './dot.png'
 
+import sesi_white from './sesi-white.png'
+import senai_white from './senai-white.png'
+
 // Icones
 import search_icon from './search-icon.png'
 import notification_icon from './notification-icon.png'
@@ -13,6 +16,9 @@ import support_black from './support-black-icon.png'
 export const assets = {
     logo,
     dot,
+
+    sesi_white,
+    senai_white,
 
     search_icon,
     notification_icon,

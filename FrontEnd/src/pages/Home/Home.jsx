@@ -2,13 +2,12 @@
 import React from 'react'
 import './Home.css'
 import Header from '../../components/Header/Header'
-import { Link } from 'react-router-dom'
 
 const Home = () => {
     return (
-        <div>
+        <main>
             <Header />
-         </div>
+         </main>
     )
 }
 
