@@ -4,9 +4,9 @@ import './Dados.css'
 
 const Dados = () => {
     return (
-        <main>
-            Aluno
-        </main>
+        <div>
+            Dados
+        </div>
     )
 }
 

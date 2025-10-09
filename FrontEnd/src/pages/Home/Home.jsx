@@ -5,8 +5,9 @@ import Header from '../../components/Header/Header'
 
 const Home = () => {
     return (
-        <main>
-        </main>
+        <div>
+            Home
+        </div>
     )
 }
 

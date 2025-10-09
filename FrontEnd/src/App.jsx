@@ -1,24 +1,36 @@
 import React from "react";
-import './index.css'
-import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Home from "./pages/Home/Home";
-import Calendario from "./pages/Calendario/Calendario";
-import Footer from "./components/Footer/Footer";
-import Dados from "./pages/Dados/Dados";
-import Suporte from "./pages/Suporte/Suporte";
+
 import LeftBar from "./components/Leftbar/Leftbar";
+import Navbar from './components/Navbar/Navbar'
+import Footer from "./components/Footer/Footer";
+
+import { Route, Routes } from "react-router-dom";
+
+import Dados from "./pages/Dados/Dados";
+import Home from "./pages/Home/Home";
+import Desempenho from './pages/Desempenho/Desempenho'
+
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <LeftBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dados" element={<Dados />} />
-        <Route path="/suporte" element={<Suporte />} />
-      </Routes>
+
+      {/* NOVO WRAPPER: Agrupa a barra lateral e o conteúdo rolável */}
+      <div className="content-wrapper">
+        <LeftBar /> {/* Fixo na lateral */}
+
+        {/* Este é o div que precisa das MARGENS para NÃO FICAR SOBREPOSTO */}
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dados" element={<Dados />} />
+            <Route path="/desempenho" element={<Desempenho />} />
+          </Routes>
+        </div>
+      </div>
+
+      <Footer /> 
     </div>
   );
 };
