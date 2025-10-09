@@ -45,3 +45,25 @@
 .footer-low ul li:hover {
     text-decoration: underline;
 }
+
+.sesi-senai {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    text-align: center;
+}
+
+.sesi-senai ul a {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    color: #dde4eb;
+    font-size: 20px; 
+}
+
+.sesi-senai ul {
+    margin-top: 5px;
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}

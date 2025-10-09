@@ -5,7 +5,7 @@ import './Aluno.css'
 const Aluno = () => {
     return (
         <main>
-            
+            Aluno
         </main>
     )
 }

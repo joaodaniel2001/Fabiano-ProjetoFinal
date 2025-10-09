@@ -5,7 +5,7 @@ import './Suporte.jsx'
 const Suporte = () => {
     return (
         <main>
-
+            Suporte
         </main>
     )
 }

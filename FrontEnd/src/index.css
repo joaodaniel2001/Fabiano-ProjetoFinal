@@ -11,6 +11,13 @@
 
   --blue: #0f6cbf;
   --blue-dark: #1d2939;
+
+  --bg-color: #ECECEC;
+  --text-color: #f0f0f0;
+  --hover-bg-color: #1a2050;
+  --active-bg-color: #2c357c;
+  --transition-speed: 0.4s;
+
 }
 
 * {

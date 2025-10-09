@@ -10,11 +10,19 @@ import { BiLogoInstagramAlt } from "react-icons/bi";
 const Footer = () => {
 
     const sesiList = [
-        { label: 'facebook', link: 'https://www.facebook.com/SESIsc', icon: <FaFacebookF /> },
-        { label: 'youtube', link: 'https://www.youtube.com/user/sesisantacatarina', icon: <FaYoutube /> },
-        { label: 'twitter', link: 'https://x.com/SESIsc', icon: <FaXTwitter /> },
-        { label: 'linkedin', link: 'https://www.linkedin.com/authwall?trk=bf&trkInfo=AQGSoIv-A-3ZDgAAAZnFVsCIAWZFVCxe2UBL7YHJMjpuYj-5UJ9jUJhikaLWnNP3JaTvu0eEYYKgzWXVAOHc-G9MIvN23eCMH_a3blzUaNm1WWz3lVxCDsyN8WCxPz6yksKke4U=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fsesi-servi-o-social-da-ind-stria-sc', icon: <FaLinkedinIn /> },
-        { label: 'instagram', link: 'https://www.instagram.com/accounts/login/?next=%2Fsesi.sc%2F&source=omni_redirect', icon: <BiLogoInstagramAlt /> }
+        { link: 'https://www.facebook.com/SESIsc', icon: <FaFacebookF size={15} /> },
+        { link: 'https://www.youtube.com/user/sesisantacatarina', icon: <FaYoutube size={15} /> },
+        { link: 'https://x.com/SESIsc', icon: <FaXTwitter size={15} /> },
+        { link: 'https://www.linkedin.com/company/sesisc/', icon: <FaLinkedinIn size={15} /> },
+        { link: 'https://www.instagram.com/accounts/login/?next=%2Fsesi.sc%2F&source=omni_redirect', icon: <BiLogoInstagramAlt size={15} /> }
+    ]
+
+    const senaiList = [
+        { link: 'https://www.facebook.com/senaisc?checkpoint_src=1501092823525282', icon: <FaFacebookF size={15} /> },
+        { link: 'https://www.youtube.com/user/conhecimentoamais', icon: <FaYoutube size={15} /> },
+        { link: 'https://x.com/SENAISC', icon: <FaXTwitter size={15} /> },
+        { link: 'https://www.linkedin.com/company/senai-sc---servi-o-nacional-de-aprendizagem-industrial?_l=pt_BR', icon: <FaLinkedinIn size={15} /> },
+        { link: 'https://www.instagram.com/senai.sc/', icon: <BiLogoInstagramAlt size={15} /> }
     ]
 
     const footerList = [
@@ -26,26 +34,37 @@ const Footer = () => {
     return (
         <div className='footer'>
             <div className="footer-sup">
-                <div className="sesi">
+                <div className="sesi-senai">
                     <a href="https://sesisc.org.br/">
                         <img src={assets.sesi_white} alt="Logo sesi" />
                     </a>
                     <ul>
                         {sesiList.map((item) => {
-                            <a href={item.link} key={item.label} target="_blank" rel="noopener noreferrer">
-                                <li>{item.icon}</li>
-                            </a>
+                            return (
+                                <a href={item.link}>
+                                    <li>{item.icon}</li>
+                                </a>
+                            )
                         })}
                     </ul>
                 </div>
-                <div className="senai">
+                <div className="sesi-senai">
                     <a href="https://sc.senai.br/">
                         <img src={assets.senai_white} alt="Logo senai" />
                     </a>
+                    <ul>
+                        {senaiList.map((item) => {
+                            return (
+                                <a href={item.link}>
+                                    <li>{item.icon}</li>
+                                </a>
+                            )
+                        })}
+                    </ul>
                 </div>
             </div>
             <div className="footer-low">
-                <p>Copyright ©2025 SENAI - Todos os direitos reservados</p>
+                <p>Copyright ©2025 Cabecinha - Todos os direitos reservados</p>
                 <ul>
                     {footerList.map((item) => (
                         <NavLink key={item.link}>
