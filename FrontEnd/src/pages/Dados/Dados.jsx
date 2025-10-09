@@ -1,8 +1,8 @@
 
 import React from 'react'
-import './Aluno.css'
+import './Dados.css'
 
-const Aluno = () => {
+const Dados = () => {
     return (
         <main>
             Aluno
@@ -10,4 +10,4 @@ const Aluno = () => {
     )
 }
 
-export default Aluno
+export default Dados

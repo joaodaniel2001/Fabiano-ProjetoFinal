@@ -3,7 +3,7 @@
     position: fixed;
     height: 100vh;
     background-color: var(--bg-color);
-    width: 300px;
+    width: 270px;
     padding-top: 25px;
     overflow: hidden;
     transition: var(--transition-speed) ease;
@@ -15,18 +15,19 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    font-size: 14px;
 }
 
 .leftbar-icon-text {
     display: flex;
     align-items: center;
-    color: #606060; 
+    color: #606060;
     cursor: pointer;
-    padding: 15px 25px;
+    padding: 15px 10px;
     gap: 20px;
     white-space: nowrap;
-    transition: background-color calc(var(--transition-speed) / 2) ease, color calc(var(--transition-speed) / 2) ease; /* Adicionando 'color' para transição suave */
-    border-left: 5px solid transparent; 
+    transition: background-color calc(var(--transition-speed) / 2) ease, color calc(var(--transition-speed) / 2) ease;
+    border-left: 5px solid transparent;
     text-decoration: none;
 }
 
@@ -35,6 +36,6 @@
 }
 
 .leftbar-icon-text.active {
-    border-left: 5px solid var(--blue, #0047B6); 
-    color: #0047B6; 
+    border-left: 5px solid var(--blue, #0047B6);
+    color: #0047B6;
 }

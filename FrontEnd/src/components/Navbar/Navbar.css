@@ -12,7 +12,7 @@
 }
 
 .navbar .logo {
-  width: 300px;
+  width: 350px;
   cursor: pointer;
 }
 
@@ -58,12 +58,12 @@
   cursor: pointer;
   padding: 10px 15px;
   transition: .3s ease;
-  display: flex; 
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  text-decoration: none; 
-  color: var(--black-bgr); 
+  text-decoration: none;
+  color: var(--black-bgr);
 }
 
 /* Regras que estavam em .navbar li:hover */
