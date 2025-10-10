@@ -11,10 +11,10 @@ import { Link } from 'react-router-dom';
 
 const LeftBar = () => {
 
-    const [menu, setMenu] = useState('/')
+    const [menu, setMenu] = useState('principal')
 
     const menuList = [
-        { name: 'pricipal', label: 'Principal', icon: <IoMdHome size={20} />, to: '/' },
+        { name: 'principal', label: 'Principal', icon: <IoMdHome size={20} />, to: '/' },
         { name: 'dados', label: 'Dados Pessoais', icon: <FaRegUser size={20} />, to: '/dados' },
         { name: 'desempenho', label: 'Desempenho', icon: <SlGraph size={20} />, to: '/desempenho' },
         { name: 'identificacao-estudantil', label: 'Identificação Estudantil', icon: <HiIdentification size={20} />, to: '/identificacao-estudantil' },
