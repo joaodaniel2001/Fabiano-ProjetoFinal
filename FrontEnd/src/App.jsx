@@ -1,36 +1,39 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';import { AuthProvider } from "./context/AuthContext";
 
+// Componentes
 import LeftBar from "./components/Leftbar/Leftbar";
 import Navbar from './components/Navbar/Navbar'
 import Footer from "./components/Footer/Footer";
+import PrivateRoute from "./components/PrivateRoute";
 
-import { Route, Routes } from "react-router-dom";
-
-import Dados from "./pages/Dados/Dados";
+// Páginas
+import LoginPage from "./pages/LoginPage/LoginPage";
 import Home from "./pages/Home/Home";
-import Desempenho from './pages/Desempenho/Desempenho'
-
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-
-      {/* NOVO WRAPPER: Agrupa a barra lateral e o conteúdo rolável */}
-      <div className="content-wrapper">
-        <LeftBar /> {/* Fixo na lateral */}
-
-        {/* Este é o div que precisa das MARGENS para NÃO FICAR SOBREPOSTO */}
-        <div className="main-content">
+      <Router>
+        <AuthProvider>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dados" element={<Dados />} />
-            <Route path="/desempenho" element={<Desempenho />} />
-          </Routes>
-        </div>
-      </div>
 
-      <Footer /> 
+            {/* Página de Login (Rota raiz) */}
+            <Route path="/" element={<LoginPage />} />
+
+            <Route
+              path="/home"
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              } />
+
+            {/* Redirecionamento 404 */}
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
     </div>
   );
 };

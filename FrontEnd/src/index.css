@@ -1,19 +1,10 @@
 :root {
-    --text-default: #000;
-    --black-bgr: #101828;
-    --white: #fff;
-    --gray-100: #D2D2D2;
-    --gray-200: #D2D2D2;
-    --red-tomato: #ff6347;
-    --blue: #0148B2;
-    --blue-dark: #1d2939;
-    --bg-color: #ECECEC;
-    --text-color: #f0f0f0;
-    --hover-bg-color: #1a2050;
-    --active-bg-color: #2c357c;
-    --transition-speed: 0.4s;
-    --navbar-height: 70px; 
-    --leftbar-width: 250px;
+    --color-blue-1: #005AB6;
+    --color-blue-2: #0047B6;
+    --color-blue-3: #0041aa;
+
+    --color-gray-1: #A8B6C0;
+    --color-white: #fff;
 }
 
 * {
@@ -21,51 +12,4 @@
     margin: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-html {
-    font-size: 62.5%;
-    min-height: 100vh;
-}
-
-body {
-    font-size: 1.6rem;
-    color: var(--text-default);
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* --- ESTILOS FIXOS (Tiram os elementos do fluxo) --- */
-
-/* NAVBAR: Fixo no topo */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--navbar-height);
-    z-index: 1000;
-    background-color: var(--white);
-}
-
-/* LEFTBAR: Fixo na lateral, começando abaixo do Navbar */
-.leftbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--leftbar-width);
-    height: calc(100vh - var(--navbar-height)); 
-    z-index: 999;
-}
-
-/* --- COMPENSAÇÃO DE CONTEÚDO (Para evitar que o conteúdo fique escondido) --- */
-
-.main-content {
-    margin-top: var(--navbar-height); 
-    margin-left: var(--leftbar-width);
-    min-height: calc(100vh - var(--navbar-height)); 
-    padding: 20px;
 }

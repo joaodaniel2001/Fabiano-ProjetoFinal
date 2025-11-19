@@ -1,0 +1,72 @@
+.loginPage {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    background-color: var(--color-blue-1);
+    min-height: 100vh;
+}
+
+.login-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+}
+
+.login-header img {
+    width: 250px;
+    background-size: cover;
+}
+
+.login-container {
+    background-color: var(--color-white);
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 500px;
+    margin: 50px 10%;
+}
+
+.login-container h1 {
+    color: var(--color-blue-2);
+}
+
+.login-container p {
+    color: var(--color-gray-1);
+    margin-bottom: 20px;
+}
+
+.login-container p b {
+    font-weight: 700;
+}
+
+.login-container button {
+    background-color: var(--color-blue-2);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    color: var(--color-white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+.login-container button:hover {
+    background-color: var(--color-blue-3);
+}
+
+.login-container form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.login-container input {
+    width: 100%;
+}
+
+.login-column-2 {
+    width: 100%;
+    background-image: url('./login_woman.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
