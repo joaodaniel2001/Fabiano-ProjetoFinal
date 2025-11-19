@@ -1,7 +1,7 @@
 // FrontEnd/src/context/AuthContext.jsx
 
 import React, { createContext, useState, useEffect, useContext, useCallback } from 'react';
-import axios from 'axios'; // ⬅️ Não se esqueça de instalar: npm install axios
+import axios from 'axios';
 
 const AuthContext = createContext(undefined);
 
