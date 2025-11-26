@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'; // 👈 Importe useEffect
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import './LoginPage.css'
+import './LoginPage.css';
 
 function LoginPage() {
     const [nomeUsuario, setNomeUsuario] = useState('');
@@ -10,16 +10,14 @@ function LoginPage() {
     const { login, isLoggedIn } = useAuth();
     const navigate = useNavigate();
 
-    // 🚀 Lógica de Redirecionamento Corrigida com useEffect
+    // 🚀 Lógica de Redirecionamento com useEffect (CORRETA)
+    // Redireciona o usuário para a home se ele JÁ estiver logado.
     useEffect(() => {
-        // Verifica se o usuário JÁ ESTÁ logado
         if (isLoggedIn) {
             // Chama navigate APÓS a renderização do componente
             navigate('/home', { replace: true });
         }
     }, [isLoggedIn, navigate]); // Dependências: Roda quando isLoggedIn ou navigate mudam
-
-    // Remova o bloco de `if (isLoggedIn)` do corpo principal do componente!
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,35 +26,37 @@ function LoginPage() {
         const result = await login(nomeUsuario, senha);
 
         if (result.success) {
-            // Esta navegação em um manipulador de evento (handleSubmit) está CORRETA.
+            // Esta navegação em um manipulador de evento (após o login) está CORRETA.
             navigate('/home');
         } else {
             setError(result.message);
         }
     };
 
-    // Se o useEffect disparar a navegação, o componente será descartado, 
-    // mas o JSX abaixo só será renderizado se `isLoggedIn` for `false` inicialmente.
+    // O JSX só será renderizado se `isLoggedIn` for `false` inicialmente (ou no primeiro render).
+    // O useEffect se encarregará de redirecionar se o estado for `true`.
     return (
-        <div className='loginPage'>
-            {/* ... todo o seu JSX de formulário e layout aqui ... */}
-            <div className="login-header">
-                <img src="./sesi-senai-branca.png" alt="SESISENAI" />
-            </div>
-            <div className="login-column">
+        <div className="login-wrapper"> {/* Mantive uma classe de wrapper comum */}
+
+            <img className="login-logo" src="./sesi-senai-branca.png" alt="SESI SENAI" />
+
+            {/* Consolidando o layout do formulário */}
+            <div className="login-box-container"> 
                 <div className="login-container">
                     <div style={{ display: 'flex', textAlign: 'center', flexDirection: 'column' }}>
                         <h1>Bem-Vindo</h1>
                         <p>ao site do <b>SESI SENAI</b></p>
                     </div>
+
                     <form onSubmit={handleSubmit}>
                         <input
                             type="text"
-                            placeholder="usuario"
+                            placeholder="usuário"
                             value={nomeUsuario}
                             onChange={(e) => setNomeUsuario(e.target.value)}
                             required
                         />
+
                         <input
                             type="password"
                             placeholder="Senha"
@@ -64,18 +64,16 @@ function LoginPage() {
                             onChange={(e) => setSenha(e.target.value)}
                             required
                         />
-                        <button type="submit">
-                            Entrar
-                        </button>
-                        {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+
+                        <button type="submit">Entrar</button>
+
+                        {error && <p className="error">{error}</p>}
                     </form>
                 </div>
             </div>
-            <div className="login-column-2">
 
-            </div>
-        </div >
+        </div>
     );
 }
 
-export default LoginPage;   
+export default LoginPage;
