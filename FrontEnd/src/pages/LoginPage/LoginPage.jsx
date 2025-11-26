@@ -1,38 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // 👈 Importe useEffect
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import './LoginPage.css'
 
 function LoginPage() {
-    const [matricula, setMatricula] = useState('');
+    const [nomeUsuario, setNomeUsuario] = useState('');
     const [senha, setSenha] = useState('');
     const [error, setError] = useState('');
     const { login, isLoggedIn } = useAuth();
     const navigate = useNavigate();
 
-    // Redirecionamento imediato: Se já estiver logado, não precisa ver o login
-    if (isLoggedIn) {
-        navigate('/home', { replace: true });
-        return null; // Não renderiza nada enquanto redireciona
-    }
+    // 🚀 Lógica de Redirecionamento Corrigida com useEffect
+    useEffect(() => {
+        // Verifica se o usuário JÁ ESTÁ logado
+        if (isLoggedIn) {
+            // Chama navigate APÓS a renderização do componente
+            navigate('/home', { replace: true });
+        }
+    }, [isLoggedIn, navigate]); // Dependências: Roda quando isLoggedIn ou navigate mudam
+
+    // Remova o bloco de `if (isLoggedIn)` do corpo principal do componente!
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); // Limpa erros anteriores
+        setError('');
 
-        // Chama a função login do AuthContext
-        const result = await login(matricula, senha);
+        const result = await login(nomeUsuario, senha);
 
         if (result.success) {
+            // Esta navegação em um manipulador de evento (handleSubmit) está CORRETA.
             navigate('/home');
         } else {
-            // Login Falhou: Exibe a mensagem de erro da API
             setError(result.message);
         }
     };
 
+    // Se o useEffect disparar a navegação, o componente será descartado, 
+    // mas o JSX abaixo só será renderizado se `isLoggedIn` for `false` inicialmente.
     return (
         <div className='loginPage'>
+            {/* ... todo o seu JSX de formulário e layout aqui ... */}
             <div className="login-header">
                 <img src="./sesi-senai-branca.png" alt="SESISENAI" />
             </div>
@@ -45,9 +52,9 @@ function LoginPage() {
                     <form onSubmit={handleSubmit}>
                         <input
                             type="text"
-                            placeholder="Matrícula"
-                            value={matricula}
-                            onChange={(e) => setMatricula(e.target.value)}
+                            placeholder="usuario"
+                            value={nomeUsuario}
+                            onChange={(e) => setNomeUsuario(e.target.value)}
                             required
                         />
                         <input
@@ -71,4 +78,4 @@ function LoginPage() {
     );
 }
 
-export default LoginPage;
+export default LoginPage;   

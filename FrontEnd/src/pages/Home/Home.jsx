@@ -1,11 +1,15 @@
-// FrontEnd/src/components/Header.jsx
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 function Home() {
-    const { user, logout } = useAuth();
+
+    const { user, loading, fetchUserInfo } = useAuth();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetchUserInfo();
+    }, [fetchUserInfo]);
 
     // Função que chama o logout e redireciona
     const handleLogout = () => {
@@ -21,7 +25,7 @@ function Home() {
 
     return (
         <header style={headerStyle}>
-            <span style={userStyle}>Bem-vindo, {user.nome}!</span>
+            <span style={userStyle}>Bem-vindo, {user.nomeUsuario}!</span>
             <button
                 onClick={handleLogout}
                 style={buttonStyle}

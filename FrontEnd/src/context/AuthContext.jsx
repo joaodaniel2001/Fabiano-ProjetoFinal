@@ -1,13 +1,8 @@
-// FrontEnd/src/context/AuthContext.jsx
-
 import React, { createContext, useState, useEffect, useContext, useCallback } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext(undefined);
 
-/**
- * Hook customizado para usar o Contexto de Autenticação.
- */
 export const useAuth = () => {
     const context = useContext(AuthContext);
     if (context === undefined) {
@@ -16,18 +11,12 @@ export const useAuth = () => {
     return context;
 };
 
-/**
- * Provedor de Autenticação.
- */
 export const AuthProvider = ({ children }) => {
-
-    // 1. Leitura Inicial (Persistência)
     const [user, setUser] = useState(() => {
         const storedUser = localStorage.getItem('@MyApp:user');
         try {
             return storedUser ? JSON.parse(storedUser) : null;
         } catch (error) {
-            console.error("Erro ao ler dados do usuário do localStorage:", error);
             localStorage.removeItem('@MyApp:user');
             return null;
         }
@@ -35,41 +24,62 @@ export const AuthProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(true);
 
-    // 2. FUNÇÃO DE LOGIN: Conectando ao Back-end
-    const login = useCallback(async (matricula, senha) => {
+    const login = useCallback(async (nomeUsuario, senha) => {
         setLoading(true);
 
         try {
             const response = await axios.post('http://localhost:3000/api/autenticacao/login', {
-                matricula,
+                nomeUsuario,
                 senha,
             });
 
             const { user: userData, token } = response.data;
-
-            // Cria o Payload com o Token
             const userPayload = { ...userData, token };
-
             setUser(userPayload);
 
             return { success: true };
 
         } catch (error) {
             const message = error.response?.data?.message || 'Falha de conexão ou credenciais inválidas.';
-            console.error('Erro de Login na API:', message);
-
             return { success: false, message };
         } finally {
             setLoading(false);
         }
     }, []);
 
-    // 3. FUNÇÃO DE LOGOUT
     const logout = useCallback(() => {
         setUser(null);
     }, []);
 
-    // 4. EFEITO COLATERAL (Salvar no localStorage)
+    const fetchUserInfo = useCallback(async () => {
+        if (!user || !user.token) {
+            return null;
+        }
+
+        try {
+            setLoading(true);
+
+            const config = {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`,
+                },
+            };
+
+            const response = await axios.get('http://localhost:3000/api/usuario/perfil', config);
+
+            const updatedUserData = response.data;
+            const newUserPayload = { ...updatedUserData, token: user.token };
+            setUser(newUserPayload);
+
+            return newUserPayload;
+
+        } catch (error) {
+            return null;
+        } finally {
+            setLoading(false);
+        }
+    }, [user]);
+
     useEffect(() => {
         if (user) {
             localStorage.setItem('@MyApp:user', JSON.stringify(user));
@@ -87,6 +97,7 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         loading,
+        fetchUserInfo,
     };
 
     if (loading) {
