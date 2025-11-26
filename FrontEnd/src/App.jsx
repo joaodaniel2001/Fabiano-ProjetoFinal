@@ -14,7 +14,7 @@ import Home from "./pages/Home/Home";
 const App = () => {
   return (
     <div>
-      <Router>
+      
         <AuthProvider>
           <Routes>
 
@@ -33,7 +33,6 @@ const App = () => {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </AuthProvider>
-      </Router>
     </div>
   );
 };

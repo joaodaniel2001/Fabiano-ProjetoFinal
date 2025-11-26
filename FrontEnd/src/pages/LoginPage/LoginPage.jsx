@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import './LoginPage.css'
+import './LoginPage.css';
 
 function LoginPage() {
     const [matricula, setMatricula] = useState('');
@@ -10,38 +10,31 @@ function LoginPage() {
     const { login, isLoggedIn } = useAuth();
     const navigate = useNavigate();
 
-    // Redirecionamento imediato: Se já estiver logado, não precisa ver o login
     if (isLoggedIn) {
         navigate('/home', { replace: true });
-        return null; // Não renderiza nada enquanto redireciona
+        return null;
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); // Limpa erros anteriores
+        setError('');
 
-        // Chama a função login do AuthContext
         const result = await login(matricula, senha);
-
-        if (result.success) {
-            navigate('/home');
-        } else {
-            // Login Falhou: Exibe a mensagem de erro da API
-            setError(result.message);
-        }
+        if (result.success) navigate('/home');
+        else setError(result.message);
     };
 
     return (
-        <div className='loginPage'>
-            <div className="login-header">
-                <img src="./sesi-senai-branca.png" alt="SESISENAI" />
-            </div>
-            <div className="login-column">
-                <div className="login-container">
-                    <div style={{ display: 'flex', textAlign: 'center', flexDirection: 'column' }}>
-                        <h1>Bem-Vindo</h1>
-                        <p>ao site do <b>SESI SENAI</b></p>
-                    </div>
+        <div className="login-wrapper">
+
+            <img className="login-logo" src="./sesi-senai-branca.png" alt="SESI SENAI" />
+
+            <div className="login-left">
+                <div className="login-box">
+                    
+                    <h1>Bem-Vindo</h1>
+                    <p>ao site do <b>SESI SENAI</b></p>
+
                     <form onSubmit={handleSubmit}>
                         <input
                             type="text"
@@ -50,6 +43,7 @@ function LoginPage() {
                             onChange={(e) => setMatricula(e.target.value)}
                             required
                         />
+
                         <input
                             type="password"
                             placeholder="Senha"
@@ -57,17 +51,18 @@ function LoginPage() {
                             onChange={(e) => setSenha(e.target.value)}
                             required
                         />
-                        <button type="submit">
-                            Entrar
-                        </button>
-                        {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+
+                        <button type="submit">Entrar</button>
+
+                        {error && <p className="error">{error}</p>}
+
                     </form>
                 </div>
             </div>
-            <div className="login-column-2">
 
-            </div>
-        </div >
+            <div className="login-right"></div>
+
+        </div>
     );
 }
 
